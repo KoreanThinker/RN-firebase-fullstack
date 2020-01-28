@@ -13,7 +13,7 @@ react-native와 firebase로 만드는 앱 Example
 ## 필요
 - 파이어베이스 계정
 
-## 제작순서
+## 앱 순서
 1. [typescript로inti](https://facebook.github.io/react-native/docs/typescript)
 2. [reactNavigation 설치](https://reactnavigation.org/docs/en/getting-started.html)
 3. [firebase 연동](https://invertase.io/oss/react-native-firebase/quick-start/existing-project)
@@ -31,3 +31,12 @@ react-native와 firebase로 만드는 앱 Example
     npm install redux-persist
     yarn add @react-native-community/async-storage
     ```
+6. apollo
+7. functions
+
+## 서버 순서
+1. 파이어베이스에 로그인
+    ```
+    firebase login
+    ```
+2. [firebase init functions](https://firebase.google.com/docs/functions/typescript)
