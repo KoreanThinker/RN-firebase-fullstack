@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.app"
+        applicationId "com.koreanthinker.rnfirebasefullstack"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -192,6 +192,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+    implementation project(path: ":@react-native-firebase_app")
 
     if (enableHermes) {
       def hermesPath = "../../node_modules/hermesvm/android/";
@@ -210,3 +211,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply plugin: 'com.google.gms.google-services'

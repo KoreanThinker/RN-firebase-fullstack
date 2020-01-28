@@ -1,4 +1,4 @@
-package com.app;
+package com.koreanthinker.rnfirebasefullstack;
 
 import android.app.Application;
 import android.util.Log;
@@ -10,7 +10,7 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
