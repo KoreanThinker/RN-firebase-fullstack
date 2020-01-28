@@ -18,7 +18,6 @@ const HomeScreen = () => {
         }
     }
 
-    console.log(1)
     useEffect(() => {
         console.log('hi')
         functions().useFunctionsEmulator('http://localhost:5000');

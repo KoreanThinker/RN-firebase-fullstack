@@ -41,6 +41,9 @@ react-native와 firebase로 만드는 앱 Example
     ```
 2. [firebase init functions](https://firebase.google.com/docs/functions/typescript)
     ```
-    //로컬서버
-    firebase emulators:start --only functions
+    //로컬에서 실행하는 방법 (Hot load) server/functions level에서
+    //터미널 1
+    yarn build --watch
+    //터미널 2
+    yarn start
     ```

@@ -6,7 +6,7 @@ admin.initializeApp();
 
 export const getHello = functions.https.onCall(async data => {
     try {
-        return 'Hello2'
+        return 'Hello322'
     } catch (error) {
         throw new functions.https.HttpsError('failed-precondition', error);
     }
