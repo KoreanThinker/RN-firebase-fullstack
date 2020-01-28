@@ -40,3 +40,7 @@ react-native와 firebase로 만드는 앱 Example
     firebase login
     ```
 2. [firebase init functions](https://firebase.google.com/docs/functions/typescript)
+    ```
+    //로컬서버
+    firebase emulators:start --only functions
+    ```
