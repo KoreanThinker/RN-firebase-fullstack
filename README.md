@@ -8,6 +8,7 @@ react-native와 firebase로 만드는 앱 Example
     - context api
     - apollo
 - firebase
+- typescript
 
 ## 필요
 - 파이어베이스 계정
@@ -23,4 +24,10 @@ react-native와 firebase로 만드는 앱 Example
     ```
     // android/app/build.gradle에 이거한줄이면 충분
     apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+    ```
+5. Redux & persist
+    ```
+    yarn add redux react-redux @types/react-redux
+    npm install redux-persist
+    yarn add @react-native-community/async-storage
     ```
