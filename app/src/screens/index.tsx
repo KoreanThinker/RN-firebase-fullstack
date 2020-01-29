@@ -8,7 +8,7 @@ import { Transition } from 'react-native-reanimated';
 import { color1 } from '../components/styles';
 import { fromRight } from 'react-navigation-transitions';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-
+import { Text, View } from 'react-native';
 
 import HomeScreen from './HomeScreen'
 
@@ -19,6 +19,7 @@ import {
     PolicyScreen,
     ForgotPwScreen
 } from './Sign'
+
 
 
 
@@ -71,19 +72,19 @@ const SignStack = createStackNavigator(
         ForgotPwScreen
     },
     {
-        initialRouteName: 'SignInScreen',
-        defaultNavigationOptions: ({ navigation }) => ({
-            headerStyle: {
-                height: 50,
-                backgroundColor: color1,
-            },
-            headerLeft:
+        initialRouteName: 'PolicyScreen',
+        defaultNavigationOptions: ({ navigation, navigationOptions }) => ({
+            header: () => <View style={{ flexDirection: 'row', height: 50, width: '100%', backgroundColor: color1 }}>
                 <TouchableWithoutFeedback
                     onPress={() => navigation.goBack()}
                     style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center' }}
                 >
-                    <Icon name='arrowleft' color='white' size={26} />
+                    <Icon name='arrowleft' color='#fff' size={26} />
                 </TouchableWithoutFeedback>
+                <View style={{ flex: 1, paddingRight: 50 }}>
+                    <Text style={{ alignSelf: 'center', fontSize: 16, color: '#fff' }} >{navigationOptions.}</Text>
+                </View>
+            </View>
         }),
         transitionConfig: () => fromRight()
     }
@@ -100,9 +101,9 @@ const SignSwitch = createAnimatedSwitchNavigator(
             <Transition.Together>
                 <Transition.Out
                     type='slide-left'
-                    durationMs={400}
+                    durationMs={0}
                 />
-                <Transition.In type='slide-right' durationMs={400} />
+                <Transition.In type='slide-right' durationMs={0} />
             </Transition.Together>
         ),
     }

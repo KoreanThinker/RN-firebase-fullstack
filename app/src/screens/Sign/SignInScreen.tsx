@@ -4,7 +4,7 @@ import useNavigation from '../../hooks/useNavigation'
 import styles, { color1, defaultBackgroundColor } from '../../components/styles'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import BorderWhiteView from '../../components/View/BorderWhiteView'
-import HarfOpacityInput from '../../components/input/HarfOpacityInput'
+import HarfOpacityInput from '../../components/Input/HarfOpacityInput'
 import { maxPW } from '../../components/options'
 
 const SignInScreen = () => {
