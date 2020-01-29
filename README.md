@@ -26,24 +26,19 @@ react-native와 firebase로 만드는 앱 Example
     apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
     ```
 5. Redux & persist
-    ```
-    yarn add redux react-redux @types/react-redux
-    npm install redux-persist
-    yarn add @react-native-community/async-storage
-    ```
+    `yarn add redux react-redux @types/react-redux`
+    `npm install redux-persist`
+    `yarn add @react-native-community/async-storage`
+    
 6. apollo
 7. functions
 
 ## 서버 순서
 1. 파이어베이스에 로그인
-    ```
-    firebase login
-    ```
+    `firebase login`
 2. [firebase init functions](https://firebase.google.com/docs/functions/typescript)
-    ```
-    //로컬에서 실행하는 방법 (Hot load) server/functions level에서
-    //터미널 1
-    yarn build --watch
-    //터미널 2
-    yarn start
-    ```
+    - 로컬에서 실행하는 방법 (Hot load) server/functions level에서
+        - 터미널 1
+          `yarn build --watch`
+        - 터미널 2
+            `yarn start`

@@ -3,11 +3,25 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/AntDesign'
+import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
+import { Transition } from 'react-native-reanimated';
+import { color1 } from '../components/styles';
+import { fromRight } from 'react-navigation-transitions';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 
 import HomeScreen from './HomeScreen'
 
 import SettingScreen from './SettingScreen'
+
+import {
+    SignInScreen,
+    PolicyScreen,
+    ForgotPwScreen
+} from './Sign'
+
+
+
 
 const MainTab = createBottomTabNavigator(
     {
@@ -47,10 +61,51 @@ const MainStack = createStackNavigator(
     },
     {
         initialRouteName: 'MainTab',
-        defaultNavigationOptions: {
-            headerShown: false
-        }
     }
 )
 
-export default createAppContainer(MainStack)
+const SignStack = createStackNavigator(
+    {
+        SignInScreen,
+        PolicyScreen,
+        ForgotPwScreen
+    },
+    {
+        initialRouteName: 'SignInScreen',
+        defaultNavigationOptions: ({ navigation }) => ({
+            headerStyle: {
+                height: 50,
+                backgroundColor: color1,
+            },
+            headerLeft:
+                <TouchableWithoutFeedback
+                    onPress={() => navigation.goBack()}
+                    style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center' }}
+                >
+                    <Icon name='arrowleft' color='white' size={26} />
+                </TouchableWithoutFeedback>
+        }),
+        transitionConfig: () => fromRight()
+    }
+)
+
+const SignSwitch = createAnimatedSwitchNavigator(
+    {
+        MainStack,
+        SignStack
+    },
+    {
+        initialRouteName: 'SignStack',
+        transition: ({ navigation }) => (
+            <Transition.Together>
+                <Transition.Out
+                    type='slide-left'
+                    durationMs={400}
+                />
+                <Transition.In type='slide-right' durationMs={400} />
+            </Transition.Together>
+        ),
+    }
+)
+
+export default createAppContainer(SignSwitch)

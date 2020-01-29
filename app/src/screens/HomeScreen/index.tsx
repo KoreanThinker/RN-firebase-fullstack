@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
 import functions from '@react-native-firebase/functions';
 import useTodo from '../../hooks/useTodo'
+import useNavigation from '../../hooks/useNavigation';
 
 const HomeScreen = () => {
+    const navigation = useNavigation()
     const { onChange, number } = useTodo()
     const [val, setVal] = useState('')
 
@@ -38,6 +40,12 @@ const HomeScreen = () => {
                 <Text >-1</Text>
             </TouchableWithoutFeedback>
             <Text >{val}</Text>
+
+            <TouchableWithoutFeedback
+                onPress={() => navigation.navigate('SignStack')}
+            >
+                <Text >-1</Text>
+            </TouchableWithoutFeedback>
         </View>
     )
 }
