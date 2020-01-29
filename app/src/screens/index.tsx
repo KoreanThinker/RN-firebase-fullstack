@@ -73,18 +73,28 @@ const SignStack = createStackNavigator(
     },
     {
         initialRouteName: 'PolicyScreen',
-        defaultNavigationOptions: ({ navigation, navigationOptions }) => ({
-            header: () => <View style={{ flexDirection: 'row', height: 50, width: '100%', backgroundColor: color1 }}>
-                <TouchableWithoutFeedback
-                    onPress={() => navigation.goBack()}
-                    style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center' }}
-                >
-                    <Icon name='arrowleft' color='#fff' size={26} />
-                </TouchableWithoutFeedback>
-                <View style={{ flex: 1, paddingRight: 50 }}>
-                    <Text style={{ alignSelf: 'center', fontSize: 16, color: '#fff' }} >{navigationOptions.}</Text>
+        headerMode: 'screen',
+        defaultNavigationOptions: ({ navigation }) => ({
+            header: ({ scene }) => {
+                const { options } = scene.descriptor;
+                const title =
+                    options.headerTitle !== undefined
+                        ? options.headerTitle
+                        : options.title !== undefined
+                            ? options.title
+                            : scene.route.routeName;
+                return <View style={{ flexDirection: 'row', height: 50, width: '100%', backgroundColor: color1, alignItems: 'center' }}>
+                    <TouchableWithoutFeedback
+                        onPress={() => navigation.goBack()}
+                        style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center' }}
+                    >
+                        <Icon name='arrowleft' color='#fff' size={26} />
+                    </TouchableWithoutFeedback>
+                    <View style={{ flex: 1, paddingRight: 50 }}>
+                        <Text style={{ alignSelf: 'center', fontSize: 16, color: '#fff' }} >{title}</Text>
+                    </View>
                 </View>
-            </View>
+            }
         }),
         transitionConfig: () => fromRight()
     }

@@ -5,6 +5,7 @@ import ToggleView from '../../components/View/ToggleView'
 import useNavigation from '../../hooks/useNavigation'
 import { TouchableWithoutFeedback, FlatList } from 'react-native-gesture-handler'
 import MaterialToggle from '../../components/Button/MaterialToggle'
+import { NavigationScreenComponent } from 'react-navigation'
 
 type NavigationParams = {
     nextFunction: Function
@@ -26,7 +27,7 @@ const Polices: policyType[] = [
     }
 ]
 
-const PolicyScreen: nav = () => {
+const PolicyScreen = () => {
     const navigation = useNavigation<NavigationParams>()
 
     const [check, setCheck] = useState(Polices.map(() => false))
@@ -67,7 +68,7 @@ const PolicyScreen: nav = () => {
                 ListFooterComponent={
                     <View style={{ width: '100%', height: 36, paddingHorizontal: 30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 40 }}>
                         <TouchableWithoutFeedback
-                            onPress={() => { }}
+                            onPress={() => setCheck(check.map(() => true))}
                         >
                             <Text style={{ ...styles.defaultFont }} >모두동의</Text>
                         </TouchableWithoutFeedback>
@@ -92,8 +93,7 @@ const PolicyScreen: nav = () => {
 }
 
 PolicyScreen.navigationOptions = ({ navigation }) => ({
-    title: 'policy',
-
+    title: '약관',
 })
 
 export default PolicyScreen
