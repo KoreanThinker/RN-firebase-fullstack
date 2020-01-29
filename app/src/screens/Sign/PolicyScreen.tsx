@@ -39,7 +39,7 @@ const PolicyScreen = () => {
     }
 
     const onPolicy = (item: policyType) => {
-        navigation.navigate('PolicyDetailScreen', { name: item.name, url: item.url })
+        navigation.navigate('PolicyDetailScreen', { url: item.url })
     }
 
     const RenderItem = (item: policyType, index: number) =>
