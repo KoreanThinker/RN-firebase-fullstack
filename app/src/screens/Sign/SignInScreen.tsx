@@ -14,7 +14,7 @@ const SignInScreen = () => {
     const [pw, setPw] = useState('')
 
     const onForgotPW = () => {
-        navigation.navigate('forgotPwScreen')
+        navigation.navigate('ForgotPwScreen')
     }
 
     const onSignIn = () => {

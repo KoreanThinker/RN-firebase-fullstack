@@ -4,7 +4,6 @@ import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/AntDesign'
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import { Transition } from 'react-native-reanimated';
 import { color1 } from '../components/styles';
 import { fromRight } from 'react-navigation-transitions';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -17,7 +16,8 @@ import SettingScreen from './SettingScreen'
 import {
     SignInScreen,
     PolicyScreen,
-    ForgotPwScreen
+    ForgotPwScreen,
+    PolicyDetailScreen
 } from './Sign'
 
 
@@ -69,10 +69,11 @@ const SignStack = createStackNavigator(
     {
         SignInScreen,
         PolicyScreen,
-        ForgotPwScreen
+        ForgotPwScreen,
+        PolicyDetailScreen
     },
     {
-        initialRouteName: 'PolicyScreen',
+        initialRouteName: 'SignInScreen',
         headerMode: 'screen',
         defaultNavigationOptions: ({ navigation }) => ({
             header: ({ scene }) => {
@@ -107,15 +108,6 @@ const SignSwitch = createAnimatedSwitchNavigator(
     },
     {
         initialRouteName: 'SignStack',
-        transition: ({ navigation }) => (
-            <Transition.Together>
-                <Transition.Out
-                    type='slide-left'
-                    durationMs={0}
-                />
-                <Transition.In type='slide-right' durationMs={0} />
-            </Transition.Together>
-        ),
     }
 )
 
