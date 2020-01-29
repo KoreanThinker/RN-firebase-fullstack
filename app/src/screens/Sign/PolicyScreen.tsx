@@ -34,8 +34,8 @@ const PolicyScreen = () => {
 
     const onSubmit = () => {
         if ((check.indexOf(false) !== -1)) return
-        navigation.state.params.nextFunction()
         navigation.goBack()
+        navigation.state.params.nextFunction()
     }
 
     const onPolicy = (item: policyType) => {

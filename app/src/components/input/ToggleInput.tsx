@@ -15,7 +15,7 @@ const ToggleInput: React.FC<TextInputProps> = (props) => {
             <TextInput
                 placeholderTextColor={isFocused ? '#fff' : '#000'}
                 {...props}
-                style={{ fontSize: 14, color: '#fff', margin: 0 }}
+                style={{ fontSize: 14, color: isFocused ? '#fff' : '#000', margin: 0 }}
                 onFocus={() => setFocus(true)}
                 onEndEditing={() => setFocus(false)}
             />

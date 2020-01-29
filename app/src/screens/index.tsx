@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/AntDesign'
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
@@ -17,7 +17,8 @@ import {
     SignInScreen,
     PolicyScreen,
     ForgotPwScreen,
-    PolicyDetailScreen
+    PolicyDetailScreen,
+    SignUpScreen
 } from './Sign'
 
 
@@ -70,7 +71,8 @@ const SignStack = createStackNavigator(
         SignInScreen,
         PolicyScreen,
         ForgotPwScreen,
-        PolicyDetailScreen
+        PolicyDetailScreen,
+        SignUpScreen
     },
     {
         initialRouteName: 'SignInScreen',
@@ -101,7 +103,7 @@ const SignStack = createStackNavigator(
     }
 )
 
-const SignSwitch = createAnimatedSwitchNavigator(
+const SignSwitch = createSwitchNavigator(
     {
         MainStack,
         SignStack

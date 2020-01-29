@@ -22,7 +22,7 @@ const SignInScreen = () => {
     }
 
     const onSignUp = () => {
-        navigation.navigate('PolicyScreen')
+        navigation.navigate('PolicyScreen', { nextFunction: () => navigation.navigate('SignUpScreen') })
     }
 
     return (
