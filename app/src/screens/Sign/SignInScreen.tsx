@@ -8,6 +8,7 @@ import HarfOpacityInput from '../../components/Input/HarfOpacityInput'
 import { maxPW } from '../../components/options'
 import auth from '@react-native-firebase/auth';
 import { sendToast } from '../../components/functions'
+import LoadingModal from '../../components/Modal/LoadingModal'
 
 const SignInScreen = () => {
     const navigation = useNavigation()
@@ -29,6 +30,7 @@ const SignInScreen = () => {
         setLoading(true)
         if (!id || !pw) {
             sendToast('아이디 혹은 비밀번호를 입력해주세요')
+            setLoading(false)
             return
         }
         try {
@@ -131,6 +133,10 @@ const SignInScreen = () => {
                     <Text style={{ ...styles.defaultFont, marginBottom: 40, marginTop: 20 }} >이메일로 회원가입</Text>
                 </TouchableWithoutFeedback>
             </View>
+
+            <LoadingModal
+                visible={loading}
+            />
         </View>
     )
 }

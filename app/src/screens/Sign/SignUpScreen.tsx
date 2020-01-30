@@ -7,6 +7,7 @@ import useNavigation from '../../hooks/useNavigation'
 import { sendToast, isEmail } from '../../components/functions'
 import auth from '@react-native-firebase/auth';
 import { pwTest } from '../../components/options'
+import LoadingModal from '../../components/Modal/LoadingModal'
 
 
 const SignUpScreen = () => {
@@ -88,6 +89,11 @@ const SignUpScreen = () => {
                     <Text style={{ ...styles.defaultFont, color: isCorrect() && !loading ? '#fff' : '#000' }}>완료</Text>
                 </ToggleView>
             </View>
+
+
+            <LoadingModal
+                visible={loading}
+            />
         </View>
     )
 }

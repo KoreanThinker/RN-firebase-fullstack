@@ -3,7 +3,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/AntDesign'
-import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import { color1 } from '../components/styles';
 import { fromRight } from 'react-navigation-transitions';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';

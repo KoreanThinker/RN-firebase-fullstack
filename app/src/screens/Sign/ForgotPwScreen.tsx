@@ -6,6 +6,7 @@ import useNavigation from '../../hooks/useNavigation'
 import ToggleInput from '../../components/Input/ToggleInput'
 import { sendToast } from '../../components/functions'
 import auth from '@react-native-firebase/auth';
+import LoadingModal from '../../components/Modal/LoadingModal'
 
 const ForgotPwScreen = () => {
     const navigation = useNavigation()
@@ -56,6 +57,11 @@ const ForgotPwScreen = () => {
                 <Text style={{ ...styles.defaultFont }} >메일 보내기</Text>
             </BorderWhiteView>
             <Text style={{ fontSize: 12, textAlign: 'center', marginTop: 30 }}>메일을 통해 비밀번호 재설정이 가능합니다</Text>
+
+
+            <LoadingModal
+                visible={loading}
+            />
         </View>
     )
 }
