@@ -6,24 +6,60 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import BorderWhiteView from '../../components/View/BorderWhiteView'
 import HarfOpacityInput from '../../components/Input/HarfOpacityInput'
 import { maxPW } from '../../components/options'
+import auth from '@react-native-firebase/auth';
+import { sendToast } from '../../components/functions'
 
 const SignInScreen = () => {
     const navigation = useNavigation()
 
     const [id, setId] = useState('')
     const [pw, setPw] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const onForgotPW = () => {
         navigation.navigate('ForgotPwScreen')
     }
 
-    const onSignIn = () => {
-        navigation.navigate('MainStack')
-    }
-
     const onSignUp = () => {
         navigation.navigate('PolicyScreen', { nextFunction: () => navigation.navigate('SignUpScreen') })
     }
+
+    const onSignIn = async () => {
+        if (loading) return
+        setLoading(true)
+        if (!id || !pw) {
+            sendToast('아이디 혹은 비밀번호를 입력해주세요')
+            return
+        }
+        try {
+            await auth().signInWithEmailAndPassword(id, pw)
+            setLoading(false)
+            navigation.navigate('MainStack')
+        } catch (e) {
+            setLoading(false)
+            switch (e.code) {
+                case 'auth/invalid-email':
+                    sendToast('이메일 형식을 맞춰주세요')
+                    break;
+                case 'auth/user-disabled':
+                    sendToast('해당 이메일은 비활성화 되었습니다')
+                    break;
+                case 'auth/user-not-found':
+                    sendToast('없는 이메일입니다')
+                    setId('')
+                    setPw('')
+                    break;
+                case 'auth/wrong-password':
+                    sendToast('비밀번호가 틀렸습니다')
+                    setPw('')
+                    break;
+                default:
+                    sendToast('다시 시도해 주세요')
+                    break;
+            }
+        }
+    }
+
 
     return (
         <View style={{ flex: 1, backgroundColor: defaultBackgroundColor }}>

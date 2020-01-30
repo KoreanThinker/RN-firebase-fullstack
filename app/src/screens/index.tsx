@@ -9,10 +9,6 @@ import { fromRight } from 'react-navigation-transitions';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Text, View } from 'react-native';
 
-import HomeScreen from './HomeScreen'
-
-import SettingScreen from './SettingScreen'
-
 import {
     SignInScreen,
     PolicyScreen,
@@ -21,7 +17,10 @@ import {
     SignUpScreen
 } from './Sign'
 
-
+import {
+    HomeScreen,
+    SettingScreen
+} from './Tab'
 
 
 
@@ -109,7 +108,7 @@ const SignSwitch = createSwitchNavigator(
         SignStack
     },
     {
-        initialRouteName: 'SignStack',
+        initialRouteName: 'MainStack',
     }
 )
 

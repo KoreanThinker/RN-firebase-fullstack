@@ -6,12 +6,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Todo from './Todo'
 
 
-export type RootState = ReturnType<typeof rootReducer>;
-
-
 const rootReducer = combineReducers({
     Todo: persistReducer({ key: 'Todo', storage: AsyncStorage }, Todo),
 })
+
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 
 export default function configureStore() {
@@ -19,3 +19,4 @@ export default function configureStore() {
     const persistor = persistStore(store);
     return { store, persistor };
 };
+
