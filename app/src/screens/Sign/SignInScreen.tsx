@@ -72,6 +72,7 @@ const SignInScreen = () => {
                     value={id}
                     onChangeText={t => setId(t)}
                     keyboardType='email-address'
+                    editable={!loading}
                 />
                 <HarfOpacityInput
                     placeholder='패스워드'
@@ -80,6 +81,7 @@ const SignInScreen = () => {
                     style={{ marginTop: 16 }}
                     secureTextEntry={true}
                     maxLength={maxPW}
+                    editable={!loading}
                 />
                 <BorderWhiteView
                     onPress={onSignIn}
