@@ -9,6 +9,7 @@ import { maxPW } from '../../components/options'
 import auth from '@react-native-firebase/auth';
 import { sendToast } from '../../components/functions'
 import LoadingModal from '../../components/Modal/LoadingModal'
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
 
 const SignInScreen = () => {
     const navigation = useNavigation()
@@ -23,6 +24,14 @@ const SignInScreen = () => {
 
     const onSignUp = () => {
         navigation.navigate('PolicyScreen', { nextFunction: () => navigation.navigate('SignUpScreen') })
+    }
+
+    const onFacebook = () => {
+        navigation.navigate('PolicyScreen', { nextFunction: () => onFacebookSignIn() })
+    }
+
+    const onGoogle = () => {
+        navigation.navigate('PolicyScreen', { nextFunction: () => onGoogleSignIn() })
     }
 
     const onSignIn = async () => {
@@ -62,6 +71,36 @@ const SignInScreen = () => {
         }
     }
 
+    const onFacebookSignIn = async () => {
+        setLoading(true)
+        const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+        if (result.isCancelled) return;
+
+        const data = await AccessToken.getCurrentAccessToken();
+
+        if (!data) {
+            sendToast('다시 시도해 주세요')
+        }
+        const credential = auth.FacebookAuthProvider.credential(data.accessToken);
+        try {
+            await auth().signInWithCredential(credential);
+            navigation.navigate('MainStack')
+        } catch (e) {
+            setLoading(false)
+            switch (e.code) {
+                case 'auth/account-exists-with-different-credential':
+                    sendToast('해당 이메일은 이미 사용되었습니다. 다른 방법으로 로그인해 주세요')
+                    break;
+                default:
+                    sendToast('다시 시도해 주세요')
+                    break;
+            }
+        }
+    }
+
+    const onGoogleSignIn = async () => {
+
+    }
 
     return (
         <View style={{ flex: 1, backgroundColor: defaultBackgroundColor }}>
@@ -101,7 +140,7 @@ const SignInScreen = () => {
             <View style={{ width: '100%', alignItems: 'center', position: 'absolute', bottom: 0 }}>
 
                 <BorderWhiteView
-                    onPress={onSignUp}
+                    onPress={onGoogle}
                 >
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Image
@@ -114,7 +153,7 @@ const SignInScreen = () => {
                 </BorderWhiteView>
 
                 <BorderWhiteView
-                    onPress={onSignUp}
+                    onPress={onFacebook}
                     style={{ marginTop: 16 }}
                 >
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>

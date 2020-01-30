@@ -12,6 +12,7 @@ react-native와 firebase로 만드는 앱 Example
 
 ## 필요
 - 파이어베이스 계정
+- 페이스북 (페이스북 로그인 용)
 
 ## 앱 순서
 1. [typescript로inti](https://facebook.github.io/react-native/docs/typescript)
@@ -42,3 +43,20 @@ react-native와 firebase로 만드는 앱 Example
           `yarn build --watch`
         - 터미널 2
             `yarn start`
+
+## 알아둘것
+#### 페이스북 로그인
+1. https://developers.facebook.com/ 요기서     앱만들고
+    - 페이스북 로그인 추가
+    - 키해시 **Xo8WBi6jzSxKDVR4drqm84yr9iU=** 이거로 추가 (0.61.5 버전 공용 디버그키)
+    - SSO도 켜주면됨
+    - firebase에서 facebook로그인 키면서 받을수 있는 OAuth주소를 facebook dev에 등록
+2. 나머지는 [요기참조](https://invertase.io/oss/react-native-firebase/v6/auth/social-auth#facebook)
+3. 빌드하다가 **Task :app:transformDexArchiveWithExternalLibsDexMergerForDebug FAILED**이런 버그 발생시
+    ```
+    // android/app/build.gradle
+    defaultConfig {
+            ........
+            multiDexEnabled true   // <--- this line
+    }
+    ```
