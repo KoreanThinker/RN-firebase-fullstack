@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef } from 'react'
 import { View, TextInputProps, TextInput } from 'react-native'
 import { WIDTH, color1 } from '../styles'
 
-const ToggleInput: React.FC<TextInputProps> = (props) => {
+const ToggleInput = forwardRef<TextInput, TextInputProps>((props, myref) => {
     const [isFocused, setFocus] = useState(false)
 
     const style: Object = props.style ? props.style.valueOf() : {}
@@ -18,9 +18,10 @@ const ToggleInput: React.FC<TextInputProps> = (props) => {
                 style={{ fontSize: 14, color: isFocused ? '#fff' : '#000', margin: 0 }}
                 onFocus={() => setFocus(true)}
                 onEndEditing={() => setFocus(false)}
+                ref={myref}
             />
         </View>
     )
-}
+})
 
 export default ToggleInput
