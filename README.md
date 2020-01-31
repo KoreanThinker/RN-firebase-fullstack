@@ -60,6 +60,7 @@ react-native와 firebase로 만드는 앱 Example
             multiDexEnabled true   // <--- this line
     }
     ```
+4. [자세한 내용은 커밋을 통해 확인가능](https://github.com/KoreanThinker/RN-firebase-fullstack/commit/6d76d0fc1cca67b39ce36fe476176fef740d82f7)
 #### 구글 로그인
 1. [이거](https://invertase.io/oss/react-native-firebase/v6/auth/social-auth#google)보고 따라하면됨
 2.  SHA-1 인증서를 등록해야되는데 아래 명령어로 확인이 가능하다 (project/app/android에서) / release후에는 playconsole에서 확인가능하다
@@ -68,7 +69,7 @@ react-native와 firebase로 만드는 앱 Example
 
     주의!!! 여러가지 패키지 들이 뜰텐데 Task :app:signingReport이거 안에 SHA1로 하면된다 Store주소 확인하고쓰자
     ```
-3. ```[Error: A non-recoverable sign in failure occurred]```이런오류 뜨면 [안드로이드 스튜디오 SDK수준 맞는지 확인해보자](https://github.com/react-native-community/react-native-google-signin/blob/master/docs/android-guide.md#1-android-sdk-requirements)
+3. [자세한 내용은 커밋을 통해 확인가능](https://github.com/KoreanThinker/RN-firebase-fullstack/commit/ea7cf2e670483c19575a7a7e19a9d078d5710279)
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
     - 파이어베이스에서 다운받을 수 있음
