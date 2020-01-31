@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Image } from 'react-native'
 import useNavigation from '../../hooks/useNavigation'
 import styles, { color1, defaultBackgroundColor } from '../../components/styles'
@@ -10,6 +10,8 @@ import auth from '@react-native-firebase/auth';
 import { sendToast } from '../../components/functions'
 import LoadingModal from '../../components/Modal/LoadingModal'
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { GoogleSignin, statusCodes } from '@react-native-community/google-signin';
+
 
 const SignInScreen = () => {
     const navigation = useNavigation()
@@ -17,6 +19,13 @@ const SignInScreen = () => {
     const [id, setId] = useState('')
     const [pw, setPw] = useState('')
     const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        GoogleSignin.configure({
+            scopes: [],
+            webClientId: '433114049751-36hodttec0httcsm5v0vroq56uise92a.apps.googleusercontent.com',
+        });
+    }, [])
 
     const onForgotPW = () => {
         navigation.navigate('ForgotPwScreen')
@@ -87,19 +96,55 @@ const SignInScreen = () => {
             navigation.navigate('MainStack')
         } catch (e) {
             setLoading(false)
-            switch (e.code) {
-                case 'auth/account-exists-with-different-credential':
-                    sendToast('해당 이메일은 이미 사용되었습니다. 다른 방법으로 로그인해 주세요')
-                    break;
-                default:
-                    sendToast('다시 시도해 주세요')
-                    break;
-            }
+            signInWithCreditionError(e)
         }
     }
 
     const onGoogleSignIn = async () => {
+        setLoading(true)
+        try {
+            await GoogleSignin.hasPlayServices();
 
+            await GoogleSignin.signIn()
+            console.log(1)
+            const { accessToken, idToken } = await GoogleSignin.getTokens()
+            const credential = auth.GoogleAuthProvider.credential(idToken, accessToken)
+            try {
+                await auth().signInWithCredential(credential);
+                navigation.navigate('MainStack')
+            } catch (e) {
+                setLoading(false)
+                signInWithCreditionError(e)
+            }
+        } catch (e) {
+            setLoading(false)
+            console.log(e)
+            switch (e.code) {
+                case statusCodes.SIGN_IN_CANCELLED:
+                    break;
+                case statusCodes.IN_PROGRESS:
+                    sendToast('플레이서비스가 없어서 이 기능을 사용하실 수 없습니다')
+                    break
+                case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+                    sendToast('플레이서비스가 없어서 이 기능을 사용하실 수 없습니다')
+                    break
+                default:
+                    sendToast('다시 시도해 주세요')
+            }
+
+        }
+
+    }
+
+    const signInWithCreditionError = (e: any) => {
+        switch (e.code) {
+            case 'auth/account-exists-with-different-credential':
+                sendToast('해당 이메일은 이미 사용되었습니다. 다른 방법으로 로그인해 주세요')
+                break;
+            default:
+                sendToast('다시 시도해 주세요')
+                break;
+        }
     }
 
     return (

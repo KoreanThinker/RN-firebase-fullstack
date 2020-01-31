@@ -11,6 +11,7 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 

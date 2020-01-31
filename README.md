@@ -46,7 +46,7 @@ react-native와 firebase로 만드는 앱 Example
 
 ## 알아둘것
 #### 페이스북 로그인
-1. https://developers.facebook.com/ 요기서     앱만들고
+1. https://developers.facebook.com/ 요기서 앱만들고
     - 페이스북 로그인 추가
     - 키해시 **Xo8WBi6jzSxKDVR4drqm84yr9iU=** 이거로 추가 (0.61.5 버전 공용 디버그키)
     - SSO도 켜주면됨
@@ -60,3 +60,19 @@ react-native와 firebase로 만드는 앱 Example
             multiDexEnabled true   // <--- this line
     }
     ```
+#### 구글 로그인
+1. [이거](https://invertase.io/oss/react-native-firebase/v6/auth/social-auth#google)보고 따라하면됨
+2.  SHA-1 인증서를 등록해야되는데 아래 명령어로 확인이 가능하다 (project/app/android에서) / release후에는 playconsole에서 확인가능하다
+    ```
+    ./gradlew signingReport
+
+    주의!!! 여러가지 패키지 들이 뜰텐데 Task :app:signingReport이거 안에 SHA1로 하면된다 Store주소 확인하고쓰자
+    ```
+3. ```[Error: A non-recoverable sign in failure occurred]```이런오류 뜨면 [안드로이드 스튜디오 SDK수준 맞는지 확인해보자](https://github.com/react-native-community/react-native-google-signin/blob/master/docs/android-guide.md#1-android-sdk-requirements)
+#### 보안상 업로드하지 못한 파일들
+- google-services.json
+    - 파이어베이스에서 다운받을 수 있음
+    - android/app에 넣으면됨
+- secret.json
+    - 비밀번호 같은것들을 저장해놓기 위해 만들어 놨다
+    - ```const secret = require('../../../secret.json');``` 이런식으로 사용한다
