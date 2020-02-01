@@ -77,7 +77,7 @@ react-native와 firebase로 만드는 앱 Example
 3. [자세한 내용은 커밋을 통해 확인가능](https://github.com/KoreanThinker/RN-firebase-fullstack/commit/ea7cf2e670483c19575a7a7e19a9d078d5710279)
 #### GOOGLE ADMOB
 1. [링크](https://invertase.io/oss/react-native-firebase/v6/admob/quick-start)보고 따라하면됨
-2. [자세한 내용은 커밋을 통해 확인가능]()
+2. [자세한 내용은 커밋을 통해 확인가능](https://github.com/KoreanThinker/RN-firebase-fullstack/commit/474215326c204abbeb5eb51edd0273d12cba1e59)
 
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
