@@ -11,9 +11,8 @@ export type ImageScreenPropsType = {
 
 const ImageScreen = () => {
     const navigation = useNavigation<ImageScreenPropsType>()
-    // const images = navigation.state.params.images
+    const images = navigation.state.params.images
     const [index, setIndex] = useState(0)
-    const images = ['https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500']
 
     if (!images) navigation.goBack()
 
