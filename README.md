@@ -13,7 +13,10 @@ react-native와 firebase로 만드는 앱 Example
 - https://xd.adobe.com/view/e395ed49-30ac-40a2-62f4-710b3ae04de4-95a4/
 
 ## 필요
-- 파이어베이스 계정
+- 구글계정
+    - 파이어베이스
+    - PlayStore
+    - ADMOB
 - 페이스북 (페이스북 로그인 용)
 
 ## 앱 순서
@@ -72,6 +75,10 @@ react-native와 firebase로 만드는 앱 Example
     주의!!! 여러가지 패키지 들이 뜰텐데 Task :app:signingReport이거 안에 SHA1로 하면된다 Store주소 확인하고쓰자
     ```
 3. [자세한 내용은 커밋을 통해 확인가능](https://github.com/KoreanThinker/RN-firebase-fullstack/commit/ea7cf2e670483c19575a7a7e19a9d078d5710279)
+#### GOOGLE ADMOB
+1. [링크](https://invertase.io/oss/react-native-firebase/v6/admob/quick-start)보고 따라하면됨
+2. [자세한 내용은 커밋을 통해 확인가능]()
+
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
     - 파이어베이스에서 다운받을 수 있음
@@ -79,3 +86,6 @@ react-native와 firebase로 만드는 앱 Example
 - secret.json
     - 비밀번호 같은것들을 저장해놓기 위해 만들어 놨다
     - ```const secret = require('../../../secret.json');``` 이런식으로 사용한다
+- firebase.json
+    - admob appid정보가 들어있다
+
