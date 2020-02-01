@@ -18,25 +18,43 @@ import {
 
 import {
     HomeScreen,
+    ChatScreen,
     SettingScreen
 } from './Tab'
+
+import {
+    PostScreen,
+    ImageScreen
+} from './Stack'
 
 
 
 const MainTab = createBottomTabNavigator(
     {
         HomeScreen,
+        // ChatScreen: {
+        //     screen: () => null,
+        //     navigationOptions: {
+        //         tabBarOnPress: ({ navigation }) => {
+        //             navigation.navigate('PostScreen')
+        //         }
+        //     }
+        // },
+        ChatScreen,
         SettingScreen
     },
     {
         initialRouteName: 'HomeScreen',
         defaultNavigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, horizontal, tintColor }) => {
+
                 const { routeName } = navigation.state;
                 let iconName: string = '';
                 let size = 24;
                 if (routeName === 'HomeScreen') {
                     iconName = 'home'
+                } else if (routeName === 'ChatScreen') {
+                    iconName = 'wechat'
                 } else if (routeName === 'SettingScreen') {
                     iconName = 'setting'
                 }
@@ -50,17 +68,47 @@ const MainTab = createBottomTabNavigator(
                 height: 50,
                 borderTopColor: '#dbdbdb',
                 borderTopWidth: 0.5,
-            }
+            },
+            keyboardHidesTabBar: true,
         },
+        navigationOptions: {
+            headerShown: false,
+        }
     }
 );
 
 const MainStack = createStackNavigator(
     {
-        MainTab
+        MainTab,
+        PostScreen,
+        ImageScreen
     },
     {
         initialRouteName: 'MainTab',
+        headerMode: 'screen',
+        defaultNavigationOptions: ({ navigation }) => ({
+            header: ({ scene }) => {
+                const { options } = scene.descriptor;
+                const title =
+                    options.headerTitle !== undefined
+                        ? options.headerTitle
+                        : options.title !== undefined
+                            ? options.title
+                            : scene.route.routeName;
+                return <View style={{ flexDirection: 'row', height: 50, width: '100%', backgroundColor: color1, alignItems: 'center' }}>
+                    <TouchableWithoutFeedback
+                        onPress={() => navigation.goBack()}
+                        style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center' }}
+                    >
+                        <Icon name='arrowleft' color='#fff' size={26} />
+                    </TouchableWithoutFeedback>
+                    <View style={{ flex: 1, paddingRight: 50 }}>
+                        <Text style={{ alignSelf: 'center', fontSize: 16, color: '#fff' }} >{title}</Text>
+                    </View>
+                </View>
+            }
+        }),
+        transitionConfig: () => fromRight()
     }
 )
 

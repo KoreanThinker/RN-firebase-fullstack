@@ -3,12 +3,14 @@ react-native와 firebase로 만드는 앱 Example
 
 
 ## 스택
-- react-native v6
+- react-native v6.15
     - 100% hooks & functional component
-    - context api
-    - apollo
+    - redux
 - firebase
 - typescript
+
+## 디자인
+- https://xd.adobe.com/view/e395ed49-30ac-40a2-62f4-710b3ae04de4-95a4/
 
 ## 필요
 - 파이어베이스 계정

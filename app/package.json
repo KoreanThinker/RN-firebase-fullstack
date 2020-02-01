@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@dudigital/react-native-zoomable-view": "^1.0.15",
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/google-signin": "^3.0.4",
     "@react-native-community/masked-view": "^0.1.6",
@@ -20,6 +21,7 @@
     "react-native": "0.61.5",
     "react-native-fbsdk": "^1.1.1",
     "react-native-gesture-handler": "^1.5.3",
+    "react-native-hyperlink": "0.0.19",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.6.2",
     "react-native-screens": "^2.0.0-alpha.31",
