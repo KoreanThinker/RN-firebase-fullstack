@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     },
     defaultShadow: {
         elevation: 4
+    },
+    defaultBorderBottom: {
+        borderBottomColor: '#dbdbdb',
+        borderBottomWidth: 0.5
     }
 })
 

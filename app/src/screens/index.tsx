@@ -86,7 +86,7 @@ const MainStack = createStackNavigator(
     {
         initialRouteName: 'MainTab',
         headerMode: 'screen',
-        defaultNavigationOptions: ({ navigation }) => ({
+        defaultNavigationOptions: ({ navigation, navigationOptions }) => ({
             header: ({ scene }) => {
                 const { options } = scene.descriptor;
                 const title =
@@ -102,8 +102,11 @@ const MainStack = createStackNavigator(
                     >
                         <Icon name='arrowleft' color='#fff' size={26} />
                     </TouchableWithoutFeedback>
-                    <View style={{ flex: 1, paddingRight: 50 }}>
+                    <View style={{ flex: 1 }}>
                         <Text style={{ alignSelf: 'center', fontSize: 16, color: '#fff' }} >{title}</Text>
+                    </View>
+                    <View style={{ width: 50, height: 50 }}>
+                        {options.headerRight}
                     </View>
                 </View>
             }

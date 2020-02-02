@@ -5072,6 +5072,11 @@ react-native-hyperlink@0.0.19:
     linkify-it "^2.2.0"
     mdurl "^1.0.0"
 
+react-native-image-picker@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.2.1.tgz#0d8551e171338c1f79c0950112c82ced86c664a6"
+  integrity sha512-r0RZtMxYFPOW+NbRBiN68/8pazVDBO+GUeqBQ0B+SQQPz/hgrW4ikXHoQn3R0mp3Qp1xNboHzfQDVW4VVyI6bQ==
+
 react-native-reanimated@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.7.0.tgz#896db2576552ac59d288a1f6c7f00afc171f240c"
