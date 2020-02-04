@@ -1,9 +1,9 @@
 import { postType } from "../../../components/types"
 
-async function postFunction({ userid, description, image }: postType): Promise<any> {
-    console.log(userid)
+async function postFunction({ userId, description, image }: postType): Promise<any> {
+    console.log(userId)
     console.log(description)
-    return userid
+    return userId
 }
 
 export default postFunction

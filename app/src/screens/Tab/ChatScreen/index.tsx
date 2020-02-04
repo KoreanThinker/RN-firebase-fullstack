@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, ListRenderItem, KeyboardAvoidingView, SafeAreaView } from 'react-native'
+import { View, Text, FlatList, ListRenderItem } from 'react-native'
 import styles, { color1, WIDTH, defaultMargin, defaultBackgroundColor } from '../../../components/styles'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { TouchableOpacity, TextInput, TouchableWithoutFeedback } from 'react-native-gesture-handler'
@@ -8,6 +8,7 @@ import Hyperlink from 'react-native-hyperlink'
 import Functions from '@react-native-firebase/functions'
 import Auth from '@react-native-firebase/auth'
 import { sendToast } from '../../../components/functions'
+import DefaultActivityIndicator from '../../../components/Indicator/DefaultActivityIndicator'
 
 const height = 40
 const footerHeight = 54
@@ -19,7 +20,7 @@ const ChatScreen = () => {
     const [chats, setChats] = useState([])
     const [myChat, setMyChat] = useState('')
     const [sending, setSending] = useState(false)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [isError, setIsError] = useState(false)
 
     const userId = Auth().currentUser.email
@@ -82,9 +83,13 @@ const ChatScreen = () => {
         <View style={{ backgroundColor: defaultBackgroundColor, flex: 1, alignItems: 'center', justifyContent: 'center' }}
         // behavior='padding'
         >
-            {isError
+            {isError || loading
                 ?
-                <TouchableWithoutFeedback onPress={getChat} ><Text>다시시도</Text></TouchableWithoutFeedback>
+                isError
+                    ?
+                    <TouchableWithoutFeedback onPress={getChat} ><Text>다시시도</Text></TouchableWithoutFeedback>
+                    :
+                    <DefaultActivityIndicator />
                 :
                 <>
                     {
@@ -112,6 +117,7 @@ const ChatScreen = () => {
                                 value={myChat}
                                 onChangeText={t => setMyChat(t)}
                                 editable={!sending && !loading}
+                                maxLength={1000}
                             />
                         </View>
                         <View style={{ width: height, height, backgroundColor: '#fff', borderRadius: 20, marginLeft: defaultMargin, ...styles.alignCenter }}>

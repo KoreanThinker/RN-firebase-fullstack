@@ -1,4 +1,7 @@
 import * as admin from 'firebase-admin';
+
+import { RoomId } from '..'
+
 const servicekey = require('../../key/serviceKey.json')
 
 
@@ -17,4 +20,4 @@ export const messaging = admin.messaging()
 
 
 export const chatRoomCollection = firestore.collection(COLLECTION_CHAT_ROOM_NAME)
-export const getChatCollection = (userid: string) => chatRoomCollection.doc(userid).collection(COLLECTION_CHAT_NAME)
+export const getChatCollection = (roomId: RoomId) => chatRoomCollection.doc(roomId).collection(COLLECTION_CHAT_NAME)

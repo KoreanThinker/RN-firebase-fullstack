@@ -13,42 +13,42 @@ import HomeScreenFab from '../../../components/Button/HomeScreenFab';
 
 const data: postType[] = [
     {
-        userid: 'honey476@naver.com',
+        userId: 'honey476@naver.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
     },
     {
-        userid: 'coderhyun476@gmail.com',
+        userId: 'coderhyun476@gmail.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: null,
     },
     {
-        userid: 'honey476@naver.com',
+        userId: 'honey476@naver.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
     },
     {
-        userid: 'coderhyun476@gmail.com',
+        userId: 'coderhyun476@gmail.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: null,
     },
     {
-        userid: 'honey476@naver.com',
+        userId: 'honey476@naver.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
     },
     {
-        userid: 'coderhyun476@gmail.com',
+        userId: 'coderhyun476@gmail.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: null,
     },
     {
-        userid: 'honey476@naver.com',
+        userId: 'honey476@naver.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
     },
     {
-        userid: 'coderhyun476@gmail.com',
+        userId: 'coderhyun476@gmail.com',
         description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
         image: null,
     }
@@ -60,17 +60,6 @@ const HomeScreen = () => {
 
     const [loading, setLoading] = useState(true)
     const [posts, setPosts] = useState<postType[]>(data)
-
-    const get = async () => {
-        const instance = functions().httpsCallable('getHello')
-        try {
-            const response = await instance()
-            setLoading(false)
-        } catch (error) {
-            console.log('Error: ' + error);
-            setLoading(false)
-        }
-    }
 
     const initFunction = async () => {
         // 유저 상태확인
@@ -86,8 +75,7 @@ const HomeScreen = () => {
 
     //initialize
     useEffect(() => {
-        functions().useFunctionsEmulator('http://localhost:5000');
-        get()
+        // functions().useFunctionsEmulator('http://localhost:5000');
         initFunction()
     }, [])
 

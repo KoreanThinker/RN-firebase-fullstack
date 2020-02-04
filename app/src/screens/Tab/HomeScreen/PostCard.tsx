@@ -22,7 +22,7 @@ const PostCard: React.FC<postType> = (props) => {
             <View style={{ width: '100%', padding: defaultMargin }}>
                 <HyperLink linkDefault={true} linkStyle={styles.defaultLink}>
                     <Text>
-                        <Text style={{ ...styles.defaultFont, fontWeight: 'bold' }}>{props.userid == 'coderhyun476@gmail.com' ? '개발자' : props.userid.split('@')[0]}</Text>
+                        <Text style={{ ...styles.defaultFont, fontWeight: 'bold' }}>{props.userId == 'coderhyun476@gmail.com' ? '개발자' : props.userId.split('@')[0]}</Text>
                         <Text style={styles.defaultFont} > {props.description}</Text>
                     </Text>
                 </HyperLink>

@@ -23,7 +23,7 @@ const PostScreen: NavigationStackScreenComponent = () => {
     const navigation = useNavigation()
     const [image, setImage] = useState<string>(null)
     const [description, setDescription] = useState('')
-    const [userid, setUserid] = useState(Auth().currentUser.email)
+    const [userId, setUserId] = useState(Auth().currentUser.email)
 
     const [sending, setSending] = useState(false)
 
@@ -34,7 +34,7 @@ const PostScreen: NavigationStackScreenComponent = () => {
         }
         setSending(true)
         try {
-            await postFunction({ userid, description, image })
+            await postFunction({ userId, description, image })
             navigation.goBack()
         } catch (error) {
             setSending(false)
@@ -44,7 +44,7 @@ const PostScreen: NavigationStackScreenComponent = () => {
 
     useEffect(() => {
         navigation.setParams({ onPost })
-    }, [description, userid, image])
+    }, [description, userId, image])
 
 
     const onAddImage = () => {
