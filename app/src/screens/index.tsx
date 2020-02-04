@@ -44,7 +44,7 @@ const MainTab = createBottomTabNavigator(
         SettingScreen
     },
     {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'ChatScreen',
         defaultNavigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, horizontal, tintColor }) => {
 

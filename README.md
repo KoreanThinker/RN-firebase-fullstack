@@ -48,7 +48,7 @@ react-native와 firebase로 만드는 앱 Example
           `yarn build --watch`
         - 터미널 2
             `yarn start`
-
+3. [firestore 접속 하기](https://stackoverflow.com/a/58140389)
 ## 알아둘것
 #### 페이스북 로그인
 1. https://developers.facebook.com/ 요기서 앱만들고
@@ -89,3 +89,6 @@ react-native와 firebase로 만드는 앱 Example
 - firebase.json
     - admob appid정보가 들어있다
 
+- 파이어스토어 접속 키
+    - [링크](https://stackoverflow.com/a/58140389)보고하면됨
+    - ./server/functions/key level 에 넣고 사용하면됨

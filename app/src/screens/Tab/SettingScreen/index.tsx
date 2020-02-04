@@ -42,7 +42,7 @@ const SettingScreen = () => {
         {
             title: '다른 포트폴리오 보기',
             onPress: () => {
-
+                Linking.openURL('https://github.com/KoreanThinker/portfolio')
             },
             icon: <Icon2 name='account-card-details' size={20} color={color1} />
         },

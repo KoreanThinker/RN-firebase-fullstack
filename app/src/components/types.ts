@@ -1,11 +1,11 @@
 export type chatType = {
     id: string,
     message: string,
-    isMine: boolean
+    userId: string
 }
 
 export type postType = {
-    userid: string,
+    userId: string,
     description: string,
     image: string
 }

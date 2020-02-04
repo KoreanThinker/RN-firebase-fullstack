@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, TextInput, Text, TouchableWithoutFeedback, ScrollView } from 'react-native'
-import styles, { defaultMargin, WIDTH } from '../../../components/styles'
+import styles, { defaultMargin, WIDTH, defaultBackgroundColor } from '../../../components/styles'
 import AutoHeightImage from 'react-native-auto-height-image'
 import useNavigation from '../../../hooks/useNavigation'
 import ImagePicker from 'react-native-image-picker';
@@ -62,7 +62,7 @@ const PostScreen: NavigationStackScreenComponent = () => {
 
 
     return (
-        <ScrollView style={{ flex: 1 }}
+        <ScrollView style={{ flex: 1, backgroundColor: defaultBackgroundColor }}
         >
             {image
                 ?

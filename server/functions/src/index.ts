@@ -1,14 +1,16 @@
-import * as functions from 'firebase-functions';
-import * as admin from 'firebase-admin';
 
-admin.initializeApp();
-// const db = admin.firestore();
+export type Timestamp = number
 
-export const getHello = functions.https.onCall(async data => {
-    try {
-        return 'Hello322'
-    } catch (error) {
-        throw new functions.https.HttpsError('failed-precondition', error);
-    }
-})
+export type RoomId = string
+export type ChatId = string
+export type UserId = string
 
+export type Chat = {
+    userId: UserId,
+    message: string,
+    createdAt: Timestamp
+    chatId: ChatId,
+    roomId: RoomId
+}
+
+export { sendChat, getChat } from './chat'
