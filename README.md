@@ -35,9 +35,7 @@ react-native와 firebase로 만드는 앱 Example
     `yarn add redux react-redux @types/react-redux`
     `npm install redux-persist`
     `yarn add @react-native-community/async-storage`
-    
-6. apollo
-7. functions
+6. functions
 
 ## 서버 순서
 1. 파이어베이스에 로그인
@@ -78,6 +76,10 @@ react-native와 firebase로 만드는 앱 Example
 #### GOOGLE ADMOB
 1. [링크](https://invertase.io/oss/react-native-firebase/v6/admob/quick-start)보고 따라하면됨
 2. [자세한 내용은 커밋을 통해 확인가능](https://github.com/KoreanThinker/RN-firebase-fullstack/commit/474215326c204abbeb5eb51edd0273d12cba1e59)
+
+#### 채팅 백엔드
+- https://github.com/JinHoSo/firebase-chat-server
+- 위에 링크 참고
 
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
