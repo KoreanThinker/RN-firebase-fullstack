@@ -25,15 +25,16 @@ const ChatScreen = () => {
     const userId = Auth().currentUser.email
     const sendingChat: chatType = { id: 'sending', message: '전송중...', userId }
 
-    const initalize = async () => {
+    const getChat = async () => {
         setIsError(false)
         const instance = Functions().httpsCallable('getChat')
         try {
             const response = await instance({
-                userid: Auth().currentUser.email,
+                userId: Auth().currentUser.email,
             })
-            setChats(response.data.chat)
+            setChats(response.data as chatType[])
             setLoading(false)
+            setSending(false)
         } catch (error) {
             console.log('Error: ' + error);
             sendToast('오류')
@@ -42,7 +43,7 @@ const ChatScreen = () => {
     }
 
     useEffect(() => {
-        // initalize()
+        getChat()
     }, [])
 
     const onSend = async () => {
@@ -53,12 +54,11 @@ const ChatScreen = () => {
 
         const instance = Functions().httpsCallable('sendChat')
         try {
-            const response = await instance({
+            await instance({
                 userId: Auth().currentUser.email,
                 message: myChat
             })
-            setSending(false)
-            console.log(response)
+            getChat()
         } catch (error) {
             console.log('Error: ' + error);
             sendToast('오류')
@@ -84,7 +84,7 @@ const ChatScreen = () => {
         >
             {isError
                 ?
-                <TouchableWithoutFeedback onPress={initalize} ><Text>다시시도</Text></TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={getChat} ><Text>다시시도</Text></TouchableWithoutFeedback>
                 :
                 <>
                     {
@@ -98,7 +98,7 @@ const ChatScreen = () => {
                         inverted
                         data={chats}
                         renderItem={renderItem}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item, index) => `chat${index}`}
                         style={{ flex: 1, paddingTop: 20, }}
                         overScrollMode='never'
                     />
