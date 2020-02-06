@@ -24,6 +24,7 @@ const HomeScreen = () => {
     const [isError, setIsError] = useState(false)
     const [afterCreatedAt, setAfterCreatedAt] = useState(0)
     const [isNoMorePost, setIsNoMorePost] = useState(false)
+    const [refresing, setRefreshing] = useState(false)
 
     const initFunction = async () => {
         // 유저 상태확인
@@ -49,6 +50,7 @@ const HomeScreen = () => {
             }
             setPosts(res as postType[])
             setLoading(false)
+            setRefreshing(false)
         } catch (error) {
             console.log('Error: ' + error);
             setIsError(true)
@@ -84,6 +86,12 @@ const HomeScreen = () => {
             sendToast('오류')
         }
     }
+
+    const onRefresh = () => {
+        setRefreshing(true)
+        postInit()
+    }
+
     return (
         <View style={{ flex: 1, backgroundColor: defaultBackgroundColor }}>
             <Header />
@@ -103,6 +111,8 @@ const HomeScreen = () => {
                         style={{ flex: 1 }}
                         overScrollMode='never'
                         showsVerticalScrollIndicator={false}
+                        refreshing={refresing}
+                        onRefresh={onRefresh}
                         data={posts}
                         keyExtractor={(item, index) => `post${index.toString()}`}
                         renderItem={({ item, index }) => {
