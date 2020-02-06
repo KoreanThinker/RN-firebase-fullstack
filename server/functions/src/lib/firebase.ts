@@ -13,6 +13,8 @@ admin.initializeApp({
 
 export const COLLECTION_CHAT_ROOM_NAME = 'chatRooms'
 export const COLLECTION_CHAT_NAME = 'chat'
+export const COLLECTION_POST_NAME = 'post'
+
 export const firestore = admin.firestore()
 
 export const database = admin.database()
@@ -21,3 +23,5 @@ export const messaging = admin.messaging()
 
 export const chatRoomCollection = firestore.collection(COLLECTION_CHAT_ROOM_NAME)
 export const getChatCollection = (roomId: RoomId) => chatRoomCollection.doc(roomId).collection(COLLECTION_CHAT_NAME)
+
+export const postCollection = firestore.collection(COLLECTION_POST_NAME)
