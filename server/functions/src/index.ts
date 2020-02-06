@@ -23,4 +23,4 @@ export type Post = {
 }
 
 export { sendChat, getChat } from './chat'
-export { getPost } from './post'
+export { getPost, createPost } from './post'
