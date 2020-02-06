@@ -13,65 +13,23 @@ import HomeScreenFab from '../../../components/Button/HomeScreenFab';
 import { sendToast } from '../../../components/functions';
 import DefaultActivityIndicator from '../../../components/Indicator/DefaultActivityIndicator';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-
-const data: postType[] = [
-    {
-        userId: 'honey476@naver.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
-    },
-    {
-        userId: 'coderhyun476@gmail.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: null,
-    },
-    {
-        userId: 'honey476@naver.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
-    },
-    {
-        userId: 'coderhyun476@gmail.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: null,
-    },
-    {
-        userId: 'honey476@naver.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
-    },
-    {
-        userId: 'coderhyun476@gmail.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: null,
-    },
-    {
-        userId: 'honey476@naver.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFocVdrh7XQ-XWjzCDgkUvEflBfBts5IxFoH2JhpjsAFj-O_PC&s',
-    },
-    {
-        userId: 'coderhyun476@gmail.com',
-        description: '여러분 모두 반갑습니다. 좋은 하루 되세요',
-        image: null,
-    }
-]
+import { getPost } from './getPost'
 
 
 const HomeScreen = () => {
     const navigation = useNavigation()
 
     const [loading, setLoading] = useState(true)
-    const [posts, setPosts] = useState<postType[]>(data)
-    const [afterCreatedAt, setAfterCreatedAt] = useState(0)
+    const [posts, setPosts] = useState<postType[]>([])
     const [isError, setIsError] = useState(false)
+    const [afterCreatedAt, setAfterCreatedAt] = useState(0)
     const [isNoMorePost, setIsNoMorePost] = useState(false)
 
     const initFunction = async () => {
         // 유저 상태확인
         auth().onAuthStateChanged((user: FirebaseAuthTypes.User) => {
             if (user) {
-                getPost()
+                postInit()
             }
             else {
                 navigation.navigate('SignStack')
@@ -79,16 +37,18 @@ const HomeScreen = () => {
         });
     }
 
-    const getPost = async () => {
+    const postInit = async () => {
         setIsError(false)
         setIsNoMorePost(false)
-        const instance = functions().httpsCallable('getPost')
         try {
-            const response = await instance({ afterCreatedAt })
-            if (response.data == []) setIsNoMorePost(true)
-            setPosts(response.data as postType[])
+            const res = await getPost(0)
+            if (res.length > 0) {
+                setAfterCreatedAt(res[res.length - 1].createdAt)
+            } else {
+                setIsNoMorePost(true)
+            }
+            setPosts(res as postType[])
             setLoading(false)
-
         } catch (error) {
             console.log('Error: ' + error);
             setIsError(true)
@@ -105,6 +65,25 @@ const HomeScreen = () => {
     const onPost = () => {
         navigation.navigate('PostScreen')
     }
+
+    const onGetMorePost = async () => {
+        if (isNoMorePost) return
+        setIsError(false)
+        try {
+            const res = await getPost(afterCreatedAt)
+            if (res.length > 0) {
+                setAfterCreatedAt(res[res.length - 1].createdAt)
+            } else {
+                setIsNoMorePost(true)
+            }
+            const newPosts = res as postType[]
+            setPosts(posts.concat(newPosts))
+        } catch (error) {
+            console.log('Error: ' + error);
+            setIsError(true)
+            sendToast('오류')
+        }
+    }
     return (
         <View style={{ flex: 1, backgroundColor: defaultBackgroundColor }}>
             <Header />
@@ -113,7 +92,7 @@ const HomeScreen = () => {
                 <View style={{ flex: 1, ...styles.alignCenter }}>
                     {isError
                         ?
-                        <TouchableWithoutFeedback onPress={getPost}><Text>다시시도</Text></TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback onPress={postInit}><Text>다시시도</Text></TouchableWithoutFeedback>
                         :
                         <DefaultActivityIndicator />
                     }
@@ -138,7 +117,12 @@ const HomeScreen = () => {
                             return <PostCard {...item} />
                         }}
                         ListHeaderComponent={<NotiPostCard />}
-                        ListFooterComponent={<View style={{ height: 50 + defaultMargin }} />}
+                        ListFooterComponent={
+                            <View style={{ height: 50 + defaultMargin, width: '100%', ...styles.alignCenter, paddingBottom: defaultMargin }} >
+                                {!isNoMorePost && <DefaultActivityIndicator />}
+                            </View>
+                        }
+                        onEndReached={onGetMorePost}
                     />
 
                     <HomeScreenFab
