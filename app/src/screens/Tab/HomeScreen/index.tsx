@@ -60,7 +60,7 @@ const HomeScreen = () => {
 
     //initialize
     useEffect(() => {
-        functions().useFunctionsEmulator('http://localhost:5000');
+        // functions().useFunctionsEmulator('http://localhost:5000');
         initFunction()
     }, [])
 

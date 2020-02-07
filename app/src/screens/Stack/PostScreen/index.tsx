@@ -9,6 +9,7 @@ import postFunction from './postFunction'
 import { NavigationStackScreenComponent } from 'react-navigation-stack'
 import Icon from 'react-native-vector-icons/AntDesign'
 import Auth from '@react-native-firebase/auth'
+import LoadingModal from '../../../components/Modal/LoadingModal'
 
 const ImagePickerOption = {
     title: '이미지를 골라주세요',
@@ -93,6 +94,12 @@ const PostScreen: NavigationStackScreenComponent = () => {
                 onChangeText={t => setDescription(t)}
                 editable={!sending}
             />
+
+            {sending &&
+                <LoadingModal
+                    visible={sending}
+                />
+            }
         </ScrollView>
     )
 }
