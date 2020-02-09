@@ -98,7 +98,7 @@ react-native와 firebase로 만드는 앱 Example
     - playconsole에서 찾을 수 있다.
 - facebook release key hash
     - https://developers.facebook.com/docs/android/getting-started?locale=ko_KR#release-key-hash
-    - 위링크보고 따라하면 된다
+    - 위링크보고 따라하면 된다 (CMD로 하면되고 명령 실행하는 위치는 상관없다)
     ```
     // 형식
     keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | PATH_TO_OPENSSL_LIBRARY\bin\openssl sha1 -binary | PATH_TO_OPENSSL_LIBRARY\bin\openssl base64
