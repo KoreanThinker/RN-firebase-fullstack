@@ -19,11 +19,11 @@ type policyType = {
 const Polices: policyType[] = [
     {
         name: '이용약관',
-        url: 'www.google.com'
+        url: 'https://docs.google.com/document/d/1Zb6ay4E1lhJBlmgb-vfHky8F9UBonvTqe_EG-hzlJq4/edit?usp=sharing'
     },
     {
         name: '개인정보 처리방침',
-        url: 'https://docs.google.com/document/d/e/2PACX-1vQKf6YT_E7cYo8JQDJ2cYQPVihlXVfO9VHAYTdOywr9cgNYtY9oLolxvWer2DHkNov8Btj4sATfupFY/pub'
+        url: 'https://docs.google.com/document/d/15GGHkWuH3dw23if7XZLtFko2ObAdImC5pFY_YW6Uzfc/edit?usp=sharing'
     }
 ]
 

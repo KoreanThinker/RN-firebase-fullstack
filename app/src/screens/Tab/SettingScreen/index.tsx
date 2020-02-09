@@ -49,7 +49,7 @@ const SettingScreen = () => {
         {
             title: '오픈소스 라이센스',
             onPress: () => {
-
+                navigation.navigate('OpenSourceScreen')
             },
             icon: <Icon name='cloud' size={20} color={color1} />
         },

@@ -18,13 +18,13 @@ import {
 
 import {
     HomeScreen,
-    ChatScreen,
     SettingScreen
 } from './Tab'
 
 import {
     PostScreen,
-    ImageScreen
+    ImageScreen,
+    OpenSourceScreen
 } from './Stack'
 
 
@@ -32,15 +32,7 @@ import {
 const MainTab = createBottomTabNavigator(
     {
         HomeScreen,
-        // ChatScreen: {
-        //     screen: () => null,
-        //     navigationOptions: {
-        //         tabBarOnPress: ({ navigation }) => {
-        //             navigation.navigate('PostScreen')
-        //         }
-        //     }
-        // },
-        ChatScreen,
+        // ChatScreen,
         SettingScreen
     },
     {
@@ -81,7 +73,8 @@ const MainStack = createStackNavigator(
     {
         MainTab,
         PostScreen,
-        ImageScreen
+        ImageScreen,
+        OpenSourceScreen
     },
     {
         initialRouteName: 'MainTab',
