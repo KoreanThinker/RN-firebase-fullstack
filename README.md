@@ -80,7 +80,17 @@ react-native와 firebase로 만드는 앱 Example
 #### 채팅 백엔드
 - https://github.com/JinHoSo/firebase-chat-server
 - 위에 링크 참고
+#### splash & icon
+- https://dev-yakuza.github.io/ko/react-native/react-native-splash-screen/
+- https://dev-yakuza.github.io/ko/react-native/react-native-make/
 
+위에 두개를 참조할 것 만약 안된다면 MainActivaty.java의 onCreated 확인바람 (아래 스플레시 호출시 mainactivity 변경이 생김)
+```
+ // 스플레시 app level에서
+ react-native set-splash --platform android --path ./src/asset/splash.png --resize cover --background "#ffffff"
+ // 아이콘 app level에서
+ react-native set-icon --path ./src/assets/icon.png
+```
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
     - 파이어베이스에서 다운받을 수 있음
