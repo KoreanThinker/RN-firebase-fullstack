@@ -91,6 +91,9 @@ react-native와 firebase로 만드는 앱 Example
  // 아이콘 app level에서
  react-native set-icon --path ./src/assets/icon.png
 ```
+#### release
+- https://dev-yakuza.github.io/ko/react-native/android-running-on-device/
+- 커밋 참조바람
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
     - 파이어베이스에서 다운받을 수 있음
