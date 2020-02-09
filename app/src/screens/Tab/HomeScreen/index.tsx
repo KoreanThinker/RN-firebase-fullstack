@@ -14,7 +14,7 @@ import { sendToast } from '../../../components/functions';
 import DefaultActivityIndicator from '../../../components/Indicator/DefaultActivityIndicator';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { getPost } from './getPost'
-
+import SplashScreen from 'react-native-splash-screen'
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -29,6 +29,9 @@ const HomeScreen = () => {
     const initFunction = async () => {
         // 유저 상태확인
         auth().onAuthStateChanged((user: FirebaseAuthTypes.User) => {
+            setTimeout(() => {
+                SplashScreen.hide();
+            }, 500);
             if (user) {
                 postInit()
             }

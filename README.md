@@ -87,7 +87,7 @@ react-native와 firebase로 만드는 앱 Example
 위에 두개를 참조할 것 만약 안된다면 MainActivaty.java의 onCreated 확인바람 (아래 스플레시 호출시 mainactivity 변경이 생김)
 ```
  // 스플레시 app level에서
- react-native set-splash --platform android --path ./src/asset/splash.png --resize cover --background "#ffffff"
+ react-native set-splash --platform android --path ./src/assets/splash.png --resize cover --background "#ffffff"
  // 아이콘 app level에서
  react-native set-icon --path ./src/assets/icon.png
 ```
