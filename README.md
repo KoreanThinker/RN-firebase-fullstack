@@ -97,14 +97,7 @@ react-native와 firebase로 만드는 앱 Example
 - google signin sha-1
     - playconsole에서 찾을 수 있다.
 - facebook release key hash
-    - https://developers.facebook.com/docs/android/getting-started?locale=ko_KR#release-key-hash
-    - 위링크보고 따라하면 된다 (CMD로 하면되고 명령 실행하는 위치는 상관없다)
-    ```
-    // 형식
-    keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | PATH_TO_OPENSSL_LIBRARY\bin\openssl sha1 -binary | PATH_TO_OPENSSL_LIBRARY\bin\openssl base64
-    // 예시
-    keytool -exportcert -alias koreanthinker -keystore C:\Users\HYUN\project\rn-firebase-fullstack\app\android\app\rn-firebase-fullstack-release-key.keystore | C:\SSL\bin\openssl sha1 -binary | C:\SSL\bin\openssl base64
-    ```
+    - 빌드하고 로그인해보면 오류 메시지 뜨는데 거기에 키해시 써있다 (꿀팁)
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
     - 파이어베이스에서 다운받을 수 있음
