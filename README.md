@@ -98,6 +98,8 @@ react-native와 firebase로 만드는 앱 Example
     - playconsole에서 찾을 수 있다.
 - facebook release key hash
     - 빌드하고 로그인해보면 오류 메시지 뜨는데 거기에 키해시 써있다 (꿀팁)
+#### Auto Import src/... 이런식으로 될때
+tsconfig.json 들가서 baseUrl을 tsconfig.json이 속해있는 폴더 이름으로 하자 여기서는 app으로 했다
 #### 보안상 업로드하지 못한 파일들
 - google-services.json
     - 파이어베이스에서 다운받을 수 있음
